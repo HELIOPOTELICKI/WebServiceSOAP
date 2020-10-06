@@ -1,0 +1,2 @@
+Doc zeep: https://docs.python-zeep.org/en/master/
+Zeep git: https://github.com/mvantellingen/python-zeep
