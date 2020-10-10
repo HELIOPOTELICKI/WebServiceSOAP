@@ -6,7 +6,7 @@ from spyne.server.wsgi import WsgiApplication
 
 class ExampleService(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
-    def slow_request(ctx, request_id):
+    def slow_request(self, request_id):
         time.sleep(1)
 
         return u'Request: %s' % request_id

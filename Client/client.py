@@ -1,4 +1,5 @@
 from zeep import Client
+from builtins import input
 
 
 class Album:
