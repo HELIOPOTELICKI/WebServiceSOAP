@@ -23,12 +23,12 @@ def main():
         print('1) Inserir album')
         print('2) Listar albuns')
         print('0) Sair')
-        op = input('> ')
-        if op == '1':
+        op = str(input('> '))
+
+        if op.strip() == '1':
             album = novoAlbum()
-            client.service.insereAlbum(album.titulo, album.artista,
-                                       album.gravadora, album.ano)
-        elif op == '2':
+            client.service.addAlbumInData(album)
+        elif op.strip() == '2':
             ls = client.service.retornaAlbuns()
             for album in ls:
                 print('')
@@ -37,7 +37,7 @@ def main():
                 print('Artista:', album.artista)
                 print('Gravadora:', album.gravadora)
                 print('Ano:', album.ano)
-        elif op == '0':
+        elif op.strip() == '0':
             break
         else:
             print('Opcao invalida! insira novamente.')
