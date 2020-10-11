@@ -10,6 +10,13 @@ def mongoConnect():
 
 
 def addAlbum(db, album):
-    collection = db['Albuns']
-    albumID = collection.insert_one(album).inserted_id
+    db = db['Albuns']
+    albumID = db.insert_one(album).inserted_id
     return albumID
+
+
+def getAllAlbuns(db):
+    retorno = []
+    for Albuns in db.Albuns.find():
+        retorno.append(Albuns)
+    return retorno

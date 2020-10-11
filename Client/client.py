@@ -26,8 +26,8 @@ def main():
         op = str(input('> '))
 
         if op.strip() == '1':
-            album = novoAlbum()
-            client.service.addAlbumInData(album)
+            #album = novoAlbum()
+            print client.service.addAlbumInData()
         elif op.strip() == '2':
             ls = client.service.retornaAlbuns()
             for album in ls:
