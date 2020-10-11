@@ -1,4 +1,6 @@
 from zeep import Client
+from zeep.cache import SqliteCache
+from zeep.transports import Transport
 from builtins import input
 
 
@@ -16,7 +18,8 @@ def novoAlbum():
 
 
 def main():
-    client = Client('http://localhost:8000/?wsdl')
+    transport = Transport(cache=SqliteCache())
+    client = Client('http://localhost:8000/?wsdl', transport=transport)
     print('#-=-# Biblioteca Musical #-=-#')
     while True:
         print('\nMENU:')
@@ -29,14 +32,15 @@ def main():
             #album = novoAlbum()
             print client.service.addAlbumInData()
         elif op.strip() == '2':
-            ls = client.service.retornaAlbuns()
-            for album in ls:
-                print('')
-                print('Codigo:', album.codigo)
-                print('Titulo:', album.titulo)
-                print('Artista:', album.artista)
-                print('Gravadora:', album.gravadora)
-                print('Ano:', album.ano)
+            ls = client.service.getAlbuns()
+            for i in range(len(ls)):
+                print '====================================='
+                print 'ID:', ls[i]["_id"]
+                print 'Titulo:', ls[i]["titulo"]
+                print 'Artista:', ls[i]["artista"]
+                print 'Gravadora:', ls[i]["gravadora"]
+                print 'Ano:', ls[i]["ano"]
+
         elif op.strip() == '0':
             break
         else:

@@ -8,8 +8,12 @@ global db
 class Methods(ServiceBase):
     @rpc(_returns=Unicode)
     def addAlbumInData(self):
-        albumID = "notImplemented"
+        albumID = "\nnot Implemented dude"
         return albumID
+
+    @rpc(_returns=Unicode)
+    def getAlbuns(self):
+        return mg.getAllAlbuns(db)
 
 
 application = Application(services=[Methods],
