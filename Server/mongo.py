@@ -17,6 +17,6 @@ def addAlbum(db, album):
 
 def getAllAlbuns(db):
     retorno = []
-    for Albuns in db.Albuns.find():
+    for Albuns in db['Albuns'].find():
         retorno.append(Albuns)
     return retorno
